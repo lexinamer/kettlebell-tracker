@@ -1,6 +1,6 @@
 <template>
   <header class="global-header">
-    <button @click="drawerOpen = true" class="btn-icon tertiary icon-md">
+    <button @click="drawerOpen = true" class="btn-icon tertiary icon-md menu-trigger">
       <Menu />
     </button>
     
@@ -21,33 +21,51 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { Menu, Plus, WeightTilde, FileText, Settings } from 'lucide-vue-next'
-import { useAuthStore } from '@/stores/authStore'
-import { useUiStore } from '@/stores/uiStore'
+import { Menu, Plus, Activity, FileText, Settings, X } from 'lucide-vue-next'
 import HamburgerDrawer from '@/components/partials/HamburgerDrawer.vue'
 
 const route = useRoute()
 const router = useRouter()
-const authStore = useAuthStore()
-const uiStore = useUiStore()
 const drawerOpen = ref(false)
 
 const pageTitle = computed(() => {
-  if (route.path.includes('/template')) return 'Block Templates'
+  if (route.path.includes('/templates')) {
+    if (route.path.includes('/new')) return 'New Template'
+    if (route.path.includes('/edit')) return 'Edit Template'
+    return 'Block Templates'
+  }
+  if (route.path.includes('/workouts')) {
+    if (route.path.includes('/new')) return 'New Workout'
+    if (route.path.includes('/edit')) return 'Edit Workout'
+    return 'Workouts'
+  }
   if (route.path.includes('/settings')) return 'Settings'
   return 'Workouts'
 })
 
 const pageIcon = computed(() => {
-  if (route.path.includes('/template')) return FileText
+  if (route.path.includes('/templates')) return FileText
   if (route.path.includes('/settings')) return Settings
-  return WeightTilde
+  return Activity
 })
 
 const actionButton = computed(() => {
-  if (route.path.includes('/settings')) return null
+  // Show X button on edit/new pages
+  if (route.path.includes('/new') || route.path.includes('/edit')) {
+    return {
+      label: '',
+      icon: X,
+      class: 'btn-icon tertiary icon-md right-cta',
+      action: 'close'
+    }
+  }
   
-  if (route.path.includes('/template')) {
+  // No action button on settings
+  if (route.path.includes('/settings')) {
+    return null
+  }
+  
+  if (route.path.includes('/templates')) {
     return {
       label: '',
       icon: Plus,
@@ -68,11 +86,13 @@ const actionButton = computed(() => {
   return null
 })
 
-const handleAction = async () => {
+const handleAction = () => {
   if (actionButton.value.action === 'workout') {
-    uiStore.openWorkoutModal()
+    router.push('/workouts/new')
   } else if (actionButton.value.action === 'template') {
-    uiStore.openTemplateModal()
+    router.push('/templates/new')
+  } else if (actionButton.value.action === 'close') {
+    router.back()
   }
 }
 </script>
