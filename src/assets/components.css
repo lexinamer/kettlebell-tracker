@@ -1,4 +1,37 @@
 /* ========================================
+   BRAND
+   ======================================== */
+
+.brand {
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  margin-left: -5px;
+  gap: var(--spacing-sm);
+  color: var(--color-brand);
+  text-transform: uppercase;
+  letter-spacing: .1em;
+}
+
+.brand-login {
+  justify-content: center;
+  font-size: var(--font-size-xl);
+  padding-bottom: var(--spacing-md);
+}
+
+.login-container p {
+  font-size: var(--font-size-sm);
+  text-align: center;
+  color: var(--color-brand);
+  letter-spacing: .04em;
+}
+
+.logo {
+  height: 32px;
+  width: auto;
+}
+
+/* ========================================
    BUTTONS
    ======================================== */
 
@@ -827,22 +860,6 @@ input[type="number"]::-webkit-outer-spin-button {
   align-items: center;
   padding: var(--spacing-lg);
   border-bottom: 1px solid var(--color-border);
-}
-
-.brand {
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  margin-left: -5px;
-  gap: var(--spacing-sm);
-  color: #3C029F;
-  text-transform: uppercase;
-  letter-spacing: .1em;
-}
-
-.logo {
-  height: 32px;
-  width: auto;
 }
 
 .drawer-body {
