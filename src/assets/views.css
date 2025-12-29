@@ -25,40 +25,55 @@
   font-size: var(--font-size-xl);
 }
 
-.login-card .form-group {
-  margin-bottom: var(--spacing-lg);
+.login-card form {
+  display: flex;
+  flex-direction: column;
 }
 
-.login-card .submit-btn {
+.login-card input {
   width: 100%;
-  padding: var(--spacing-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-base);
+  font-family: inherit;
+}
+
+.login-card button[type="submit"] {
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
   background: var(--color-primary);
   color: white;
   border: none;
   border-radius: var(--radius-sm);
-  cursor: pointer;
   font-size: var(--font-size-base);
   font-weight: 500;
+  cursor: pointer;
+  margin-bottom: var(--spacing-md);
 }
 
-.login-card .submit-btn:hover {
+.login-card button[type="submit"]:hover {
   opacity: 0.9;
 }
 
-.login-card .toggle-text {
-  text-align: center;
-  margin-top: var(--spacing-lg);
-  font-size: var(--font-size-sm);
-  color: var(--color-text-secondary);
-}
-
-.login-card .toggle-link {
+.toggle {
+  width: 100%;
+  padding: var(--spacing-sm);
+  background: none;
+  border: none;
   color: var(--color-primary);
   cursor: pointer;
+  font-size: var(--font-size-sm);
   text-decoration: underline;
 }
 
+.toggle:hover {
+  opacity: 0.8;
+}
+
 .forgot-password {
+  width: 100%;
   background: none;
   border: none;
   color: var(--color-primary);
@@ -66,17 +81,39 @@
   font-size: var(--font-size-sm);
   margin-top: var(--spacing-md);
   text-decoration: underline;
+  padding: var(--spacing-sm);
 }
 
 .forgot-password:hover {
   opacity: 0.8;
 }
 
+.error {
+  color: var(--color-error);
+  font-size: var(--font-size-sm);
+  margin-top: var(--spacing-sm);
+  text-align: center;
+}
+
 /* ========================================
-   WORKOUTS/TEMPLATES VIEW
+   MAIN CONTENT WRAPPER
    ======================================== */
 
-.loading,
+.main-content-wrapper {
+  min-height: calc(100vh - 60px);
+  padding-bottom: var(--spacing-xl);
+}
+
+/* ========================================
+   WORKOUTS/TEMPLATES LIST VIEWS
+   ======================================== */
+
+.loading {
+  text-align: center;
+  padding: var(--spacing-xl);
+  color: var(--color-text-secondary);
+}
+
 .empty {
   text-align: center;
   padding: var(--spacing-xl);
@@ -90,33 +127,35 @@
   align-items: center;
 }
 
-.workout-list {
+.workout-list,
+.template-list {
   padding-bottom: var(--spacing-xl);
 }
 
 /* ========================================
-   BLOCK VIEW
+   EDIT VIEWS
    ======================================== */
 
-.new-template-btn {
-  width: 100%;
-  padding: var(--spacing-md);
-  background: var(--color-primary);
-  color: white;
-  border: none;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  font-size: var(--font-size-base);
-  font-weight: 500;
-  margin-bottom: var(--spacing-lg);
+.edit-view {
+  min-height: 100vh;
+  background: var(--color-background);
 }
 
-.new-template-btn:hover {
-  opacity: 0.9;
+.edit-content {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: var(--spacing-lg);
 }
 
-.template-list {
+.form-actions {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-xl);
   padding-bottom: var(--spacing-xl);
+}
+
+.form-actions button {
+  flex: 1;
 }
 
 /* ========================================
@@ -156,8 +195,8 @@
   font-size: var(--font-size-base);
 }
 
-.settings-account .btn {
-  margin-bottom: var(--spacing-md);
-  font-size: var(--font-size-sm);
-  display: block;
+.settings-account {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
 }

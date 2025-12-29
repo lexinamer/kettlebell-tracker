@@ -2,7 +2,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { useAuthStore } from '@/stores/authStore'
 import LoginView from '@/views/LoginView.vue'
 import WorkoutsView from '@/views/WorkoutsView.vue'
-import TemplateView from '@/views/TemplateView.vue'
+import WorkoutEditView from '@/views/WorkoutEditView.vue'
+import TemplatesView from '@/views/TemplatesView.vue'
+import TemplateEditView from '@/views/TemplateEditView.vue'
 import SettingsView from '@/views/SettingsView.vue'
 
 const router = createRouter({
@@ -25,9 +27,33 @@ const router = createRouter({
       meta: { requiresAuth: true }
     },
     {
-      path: '/template',
-      name: 'template',
-      component: TemplateView,
+      path: '/workouts/new',
+      name: 'workout-new',
+      component: WorkoutEditView,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/workouts/:id/edit',
+      name: 'workout-edit',
+      component: WorkoutEditView,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/templates',
+      name: 'templates',
+      component: TemplatesView,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/templates/new',
+      name: 'template-new',
+      component: TemplateEditView,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/templates/:id/edit',
+      name: 'template-edit',
+      component: TemplateEditView,
       meta: { requiresAuth: true }
     },
     {
@@ -43,7 +69,6 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   const authStore = useAuthStore()
   
-  // Wait for auth to initialize
   if (authStore.loading) {
     const unwatch = authStore.$subscribe(() => {
       if (!authStore.loading) {
