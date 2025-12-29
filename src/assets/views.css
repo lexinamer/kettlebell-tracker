@@ -1,0 +1,163 @@
+/* ========================================
+   LOGIN VIEW
+   ======================================== */
+
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: var(--spacing-md);
+}
+
+.login-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-card h1 {
+  margin: 0 0 var(--spacing-xl);
+  text-align: center;
+  font-size: var(--font-size-xl);
+}
+
+.login-card .form-group {
+  margin-bottom: var(--spacing-lg);
+}
+
+.login-card .submit-btn {
+  width: 100%;
+  padding: var(--spacing-md);
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: var(--font-size-base);
+  font-weight: 500;
+}
+
+.login-card .submit-btn:hover {
+  opacity: 0.9;
+}
+
+.login-card .toggle-text {
+  text-align: center;
+  margin-top: var(--spacing-lg);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.login-card .toggle-link {
+  color: var(--color-primary);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.forgot-password {
+  background: none;
+  border: none;
+  color: var(--color-primary);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  margin-top: var(--spacing-md);
+  text-decoration: underline;
+}
+
+.forgot-password:hover {
+  opacity: 0.8;
+}
+
+/* ========================================
+   WORKOUTS/TEMPLATES VIEW
+   ======================================== */
+
+.loading,
+.empty {
+  text-align: center;
+  padding: var(--spacing-xl);
+  color: var(--color-text-secondary);
+}
+
+.empty-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  align-items: center;
+}
+
+.workout-list {
+  padding-bottom: var(--spacing-xl);
+}
+
+/* ========================================
+   BLOCK VIEW
+   ======================================== */
+
+.new-template-btn {
+  width: 100%;
+  padding: var(--spacing-md);
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  margin-bottom: var(--spacing-lg);
+}
+
+.new-template-btn:hover {
+  opacity: 0.9;
+}
+
+.template-list {
+  padding-bottom: var(--spacing-xl);
+}
+
+/* ========================================
+   SETTINGS VIEW
+   ======================================== */
+
+.settings-section {
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--spacing-lg);
+}
+
+.settings-section h2 {
+  margin: 0 0 var(--spacing-xs);
+  font-size: var(--font-size-lg);
+}
+
+.section-description {
+  margin: 0 0 var(--spacing-lg);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.setting-item {
+  margin-bottom: var(--spacing-md);
+}
+
+.setting-item label {
+  display: block;
+  margin-bottom: var(--spacing-xs);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.readonly-value {
+  color: var(--color-text);
+  font-size: var(--font-size-base);
+}
+
+.settings-account .btn {
+  margin-bottom: var(--spacing-md);
+  font-size: var(--font-size-sm);
+  display: block;
+}

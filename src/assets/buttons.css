@@ -1,0 +1,454 @@
+/* ========================================
+   BASE STYLES
+   ======================================== */
+
+.btn,
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  border: none;
+  transition: all 0.2s;
+}
+
+.btn {
+  padding: var(--spacing-sm) var(--spacing-lg);
+}
+
+.btn-icon {
+  padding: 0;
+  width: 40px;
+  height: 40px;
+}
+
+/* ========================================
+   VARIANTS
+   ======================================== */
+
+.primary {
+  background: var(--color-primary);
+  color: white;
+}
+
+.primary:hover {
+  opacity: 0.9;
+}
+
+.secondary {
+  background: transparent;
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+}
+
+.secondary:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.tertiary {
+  background: transparent;
+  color: var(--color-text);
+}
+
+.tertiary:hover {
+  background: var(--color-hover);
+}
+
+/* ========================================
+   SHAPE MODIFIERS
+   ======================================== */
+
+.round {
+  border-radius: 50%;
+}
+
+.pill {
+  border-radius: var(--radius-sm);
+}
+
+/* ========================================
+   ICON SIZING
+   ======================================== */
+
+.btn-icon.icon-sm {
+  width: 32px;
+  height: 32px;
+}
+
+.btn-icon.icon-sm svg {
+  width: 16px;
+  height: 16px;
+}
+
+.btn-icon.icon-md {
+  width: 40px;
+  height: 40px;
+}
+
+.btn-icon.icon-md svg {
+  width: 20px;
+  height: 20px;
+}
+
+.btn-icon.icon-lg {
+  width: 48px;
+  height: 48px;
+}
+
+.btn-icon.icon-lg svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* ========================================
+   ICON SIZE IN TEXT BUTTONS
+   ======================================== */
+
+.btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ========================================
+   STATES
+   ======================================== */
+
+.btn:disabled,
+.btn-icon:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn:active:not(:disabled),
+.btn-icon:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+/* ========================================
+   CHIPS
+   ======================================== */
+
+.chip {
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  transition: all 0.2s;
+  min-width: 50px;
+  white-space: nowrap;
+}
+
+.chip:hover {
+  border-color: var(--color-primary);
+}
+
+.chip.active {
+  background: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+}
+
+.chip-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+/* ========================================
+   PRESET CHIPS
+   ======================================== */
+
+.preset-chips {
+  display: grid;
+  gap: var(--spacing-md);
+  grid-template-columns: repeat(3, 1fr)
+}
+
+.preset-chip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.preset-chip.inactive {
+  opacity: 0.5;
+}
+
+.preset-chip .chip-value {
+  cursor: pointer;
+  user-select: none;
+  font-weight: 500;
+}
+
+.preset-chip .chip-value:hover {
+  color: var(--color-primary);
+}
+
+.chip-toggle {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-secondary);
+  transition: color 0.2s;
+}
+
+.preset-chip:not(.inactive) .chip-toggle {
+  color: var(--color-primary);
+}
+
+.chip-toggle:hover {
+  opacity: 0.7;
+}
+
+.preset-chip.add-chip {
+  background: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.preset-chip.add-chip:hover {
+  opacity: 0.9;
+}
+
+@media (min-width: 768px) {
+  .preset-chips {
+    display: grid;
+    gap: var(--spacing-md);
+    grid-template-columns: repeat(4, 1fr)
+  }
+}
+
+/* ========================================
+   TOGGLE SWITCH
+   ======================================== */
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 36px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--color-border);
+  border-radius: 20px;
+  transition: 0.2s;
+}
+
+.toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.2s;
+}
+
+.toggle-switch input:checked + .toggle-slider {
+  background-color: var(--color-primary);
+}
+
+.toggle-switch input:checked + .toggle-slider:before {
+  transform: translateX(16px);
+}
+
+.toggle-switch input:disabled + .toggle-slider {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ========================================
+   SEGMENTED CONTROL
+   ======================================== */
+
+.segmented-control {
+  display: inline-flex;
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 2px;
+}
+
+.segment {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--color-text);
+  border-radius: calc(var(--radius-sm) - 2px);
+  transition: all 0.2s;
+  white-space: nowrap;
+  font-family: inherit;
+}
+
+.segment.active {
+  background: var(--color-primary);
+  color: white;
+}
+
+.segment:hover:not(.active) {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+/* ========================================
+   CUSTOM SELECT DROPDOWN
+   ======================================== */
+
+.custom-select {
+  position: relative;
+  min-width: 120px;
+}
+
+.select-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  cursor: pointer;
+  font-family: inherit;
+  transition: border-color 0.2s;
+}
+
+.select-trigger:hover {
+  border-color: var(--color-primary);
+}
+
+.select-trigger.active {
+  border-color: var(--color-primary);
+}
+
+.select-trigger .chevron {
+  transition: transform 0.2s;
+  color: var(--color-text-secondary);
+}
+
+.select-trigger .chevron.rotated {
+  transform: rotate(180deg);
+}
+
+.select-dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 100;
+}
+
+.select-option {
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: none;
+  border: none;
+  text-align: left;
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: background 0.2s;
+  font-family: inherit;
+}
+
+.select-option:hover {
+  background: var(--color-hover);
+}
+
+.select-option.selected {
+  background: var(--color-hover);
+  font-weight: 500;
+}
+
+.select-trigger {
+  width: 100%;  
+  height: 37.5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  cursor: pointer;
+  font-family: inherit;
+  transition: border-color 0.2s;
+}
+
+/* Dropdown animation */
+.dropdown-enter-active,
+.dropdown-leave-active {
+  transition: opacity 0.15s, transform 0.15s;
+}
+
+.dropdown-enter-from,
+.dropdown-leave-to {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+
+/* ========================================
+   SPECIAL BUTTONS
+   ======================================== */
+
+.delete-btn {
+  background: var(--color-error);
+  color: white;
+}
+
+.delete-btn:hover {
+  opacity: 0.9;
+}
+
+.subtle {
+  background: none;
+  border: 1px dashed var(--color-text-secondary);
+  font-size: var(--font-size-xs);
+  padding: var(--spacing-sm);
+}
+
+.callout-btn {
+  width: auto;
+}
