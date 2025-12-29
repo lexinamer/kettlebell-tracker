@@ -1,11 +1,11 @@
 <template>
-  <div v-if="authStore.loading">
+  <div v-if="authStore.loading" class="loading-screen">
     <p>Loading...</p>
   </div>
-  <div v-else>
+  <template v-else>
     <GlobalHeader v-if="authStore.user" />
     <router-view />
-  </div>
+  </template>
 </template>
 
 <script setup>
@@ -22,7 +22,20 @@ const authStore = useAuthStore()
   box-sizing: border-box;
 }
 
+html, body, #app {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.loading-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 </style>

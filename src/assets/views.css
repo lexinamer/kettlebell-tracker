@@ -2,11 +2,14 @@
    LOGIN VIEW
    ======================================== */
 
-.login-container {
+.login-wrapper {
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
+}
+
+.login-container {
   padding: var(--spacing-md);
 }
 

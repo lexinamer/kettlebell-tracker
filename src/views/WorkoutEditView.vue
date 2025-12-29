@@ -41,15 +41,9 @@
             class="block-container"
           >
 
-           <div class="block-header-wrapper" @click="toggleBlock(blockIndex)">
-            <div class="block-header" @click="toggleBlock(blockIndex)">
+           <div class="block-header-wrapper">
+            <div class="block-header">
               <div class="block-title">
-                <ChevronDown 
-                  :size="16" 
-                  :stroke-width="2.5"
-                  class="chevron" 
-                  :class="{ collapsed: collapsedBlocks[blockIndex] }" 
-                />
                 <span class="block-number">Block {{ blockIndex + 1 }}</span>
               </div>
 
@@ -86,7 +80,7 @@
             </div>
            </div>
 
-            <div v-show="!collapsedBlocks[blockIndex]" class="block-content">
+            <div class="block-content">
               <div class="form-group">
                 <label>Type</label>
                 <div class="chip-group">
@@ -215,7 +209,7 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { Calendar, Trash2, Plus, Bookmark, ChevronDown } from 'lucide-vue-next'
+import { Calendar, Trash2, Plus, Bookmark } from 'lucide-vue-next'
 import { useUserStore } from '@/stores/userStore'
 import { useTemplateStore } from '@/stores/templateStore'
 import { useWorkoutStore } from '@/stores/workoutStore'
@@ -230,7 +224,6 @@ const templateStore = useTemplateStore()
 const workoutStore = useWorkoutStore()
 
 const editMode = ref(false)
-const collapsedBlocks = ref({})
 const showSaveTemplateModal = ref(false)
 const saveTemplateBlockIndex = ref(null)
 const templateName = ref('')
@@ -274,10 +267,6 @@ const formattedDate = computed(() => {
     year: 'numeric'
   })
 })
-
-const toggleBlock = (index) => {
-  collapsedBlocks.value[index] = !collapsedBlocks.value[index]
-}
 
 const toggleWeight = (blockIndex, weight) => {
   const block = formData.value.blocks[blockIndex]
@@ -338,7 +327,6 @@ const addBlock = () => {
 
 const removeBlock = (index) => {
   formData.value.blocks.splice(index, 1)
-  delete collapsedBlocks.value[index]
 }
 
 const addExercise = (blockIndex) => {
